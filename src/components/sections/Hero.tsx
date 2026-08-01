@@ -8,24 +8,23 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden pt-40 pb-28 md:pt-52 md:pb-40"
+      className="relative pt-40 md:pt-52 pb-28 md:pb-40 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black_10%,transparent_75%)]" />
+      <div className="absolute inset-0 bg-grid mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,black_10%,transparent_75%)]" />
       <div
-        className="absolute inset-0 -z-10"
+        className="-z-10 absolute inset-0"
         style={{ background: "var(--gradient-radial)" }}
       />
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[560px] w-[900px] rounded-full bg-accent-violet/20 blur-[140px]" />
+      <div className="-top-40 left-1/2 absolute blur-[140px] rounded-full w-225 h-140 -translate-x-1/2 bg-accent-violet/20" />
 
-      <div className="relative mx-auto max-w-7xl px-6 md:px-10">
+      <div className="relative mx-auto px-6 md:px-10 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="flex justify-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-white/[0.04] px-4 py-1.5 text-xs text-muted">
-            <Sparkles className="h-3.5 w-3.5 text-accent-violet" />
+          <div className="inline-flex items-center gap-2 bg-white/[0.04] px-4 py-1.5 border border-border-strong rounded-full text-muted text-xs">
             Soluciones digitales &amp; creatividad, nivel 2026
           </div>
         </motion.div>
@@ -34,7 +33,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 text-center font-semibold tracking-[-0.03em] text-[13vw] leading-[0.98] sm:text-[64px] md:text-[86px] lg:text-[96px]"
+          className="mt-8 font-semibold text-[13vw] sm:text-[64px] md:text-[86px] lg:text-[75px] text-center leading-[0.98] tracking-[-0.03em]"
         >
           Construimos el software
           <br />
@@ -46,7 +45,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto mt-7 max-w-xl text-center text-base md:text-lg text-muted"
+          className="mx-auto mt-7 max-w-xl text-muted md:text-[15px] text-base text-center"
         >
           Desarrollo de software, sitios web, branding y gestión de redes
           sociales en un solo equipo. Diseño y tecnología pensados para
@@ -57,18 +56,18 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex sm:flex-row flex-col justify-center items-center gap-4 mt-10"
         >
           <MagneticButton
             href="#contacto"
-            className="bg-foreground text-background hover:brightness-95"
+            className="bg-foreground hover:brightness-95 text-background"
           >
             Iniciar un proyecto
-            <ArrowUpRight className="h-4 w-4" />
+            <ArrowUpRight className="w-4 h-4" />
           </MagneticButton>
           <MagneticButton
             href="#software"
-            className="border border-border-strong text-foreground hover:bg-white/[0.05]"
+            className="hover:bg-white/[0.05] border border-border-strong text-foreground"
           >
             Ver software
           </MagneticButton>
@@ -82,27 +81,27 @@ export function Hero() {
           className="relative mt-24 md:mt-28 h-[360px] sm:h-[420px] md:h-[520px]"
         >
           {/* center browser mockup */}
-          <div className="absolute left-1/2 top-0 w-[90%] sm:w-[640px] md:w-[760px] -translate-x-1/2 rounded-2xl border border-border-strong bg-surface shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)]">
-            <div className="flex items-center gap-1.5 border-b border-border px-4 py-3">
-              <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-              <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-              <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-              <div className="ml-4 h-5 flex-1 max-w-[220px] rounded-full bg-white/[0.05]" />
+          <div className="top-0 left-1/2 absolute bg-surface shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)] border border-border-strong rounded-2xl w-[90%] sm:w-[640px] md:w-[760px] -translate-x-1/2">
+            <div className="flex items-center gap-1.5 px-4 py-3 border-border border-b">
+              <span className="bg-white/15 rounded-full w-2.5 h-2.5" />
+              <span className="bg-white/15 rounded-full w-2.5 h-2.5" />
+              <span className="bg-white/15 rounded-full w-2.5 h-2.5" />
+              <div className="flex-1 bg-white/[0.05] ml-4 rounded-full max-w-[220px] h-5" />
             </div>
-            <div className="p-6 grid grid-cols-3 gap-4">
-              <div className="col-span-2 space-y-3">
-                <div className="h-4 w-2/3 rounded bg-white/[0.08]" />
-                <div className="h-3 w-full rounded bg-white/[0.04]" />
-                <div className="h-3 w-5/6 rounded bg-white/[0.04]" />
-                <div className="mt-4 h-28 rounded-xl bg-white/[0.03] border border-border" />
+            <div className="gap-4 grid grid-cols-3 p-6">
+              <div className="space-y-3 col-span-2">
+                <div className="bg-white/[0.08] rounded w-2/3 h-4" />
+                <div className="bg-white/[0.04] rounded w-full h-3" />
+                <div className="bg-white/[0.04] rounded w-5/6 h-3" />
+                <div className="bg-white/[0.03] mt-4 border border-border rounded-xl h-28" />
               </div>
               <div className="space-y-3">
                 <div
-                  className="h-24 rounded-xl border border-border-strong"
+                  className="border border-border-strong rounded-xl h-24"
                   style={{ background: "var(--gradient-primary)", opacity: 0.85 }}
                 />
-                <div className="h-3 w-full rounded bg-white/[0.05]" />
-                <div className="h-3 w-4/5 rounded bg-white/[0.05]" />
+                <div className="bg-white/[0.05] rounded w-full h-3" />
+                <div className="bg-white/[0.05] rounded w-4/5 h-3" />
               </div>
             </div>
           </div>
@@ -111,41 +110,41 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, -14, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute left-0 sm:left-2 top-16 md:top-24 w-44 rounded-2xl glass border border-border-strong p-4 shadow-2xl"
+            className="top-16 md:top-24 left-0 sm:left-2 absolute shadow-2xl p-4 border border-border-strong rounded-2xl w-44 glass"
           >
-            <div className="flex items-center gap-2 text-xs text-muted">
-              <TrendingUp className="h-3.5 w-3.5 text-accent-cyan" />
+            <div className="flex items-center gap-2 text-muted text-xs">
+              <TrendingUp className="w-3.5 h-3.5 text-accent-cyan" />
               Conversión
             </div>
-            <div className="mt-2 text-2xl font-semibold">+38%</div>
+            <div className="mt-2 font-semibold text-2xl">+38%</div>
           </motion.div>
 
           {/* floating badge card */}
           <motion.div
             animate={{ y: [0, 16, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-            className="absolute right-0 sm:right-2 top-8 md:top-6 w-48 rounded-2xl glass border border-border-strong p-4 shadow-2xl"
+            className="top-8 md:top-6 right-0 sm:right-2 absolute shadow-2xl p-4 border border-border-strong rounded-2xl w-48 glass"
           >
-            <div className="flex items-center gap-2 text-xs text-muted">
-              <Layers className="h-3.5 w-3.5 text-accent-violet" />
+            <div className="flex items-center gap-2 text-muted text-xs">
+              <Layers className="w-3.5 h-3.5 text-accent-violet" />
               Sistema de diseño
             </div>
-            <div className="mt-3 flex gap-1.5">
-              <span className="h-6 w-6 rounded-md bg-accent-violet/70" />
-              <span className="h-6 w-6 rounded-md bg-accent-cyan/60" />
-              <span className="h-6 w-6 rounded-md bg-accent-orange/60" />
-              <span className="h-6 w-6 rounded-md bg-white/10" />
+            <div className="flex gap-1.5 mt-3">
+              <span className="rounded-md w-6 h-6 bg-accent-violet/70" />
+              <span className="rounded-md w-6 h-6 bg-accent-cyan/60" />
+              <span className="rounded-md w-6 h-6 bg-accent-orange/60" />
+              <span className="bg-white/10 rounded-md w-6 h-6" />
             </div>
           </motion.div>
 
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute right-4 sm:right-10 bottom-0 md:bottom-6 w-40 rounded-2xl glass border border-border-strong p-4 shadow-2xl hidden sm:block"
+            className="hidden sm:block right-4 sm:right-10 bottom-0 md:bottom-6 absolute shadow-2xl p-4 border border-border-strong rounded-2xl w-40 glass"
           >
-            <div className="text-xs text-muted">Lanzamiento</div>
-            <div className="mt-2 h-1.5 w-full rounded-full bg-white/[0.08] overflow-hidden">
-              <div className="h-full w-[92%]" style={{ background: "var(--gradient-primary)" }} />
+            <div className="text-muted text-xs">Lanzamiento</div>
+            <div className="bg-white/[0.08] mt-2 rounded-full w-full h-1.5 overflow-hidden">
+              <div className="w-[92%] h-full" style={{ background: "var(--gradient-primary)" }} />
             </div>
           </motion.div>
         </motion.div>

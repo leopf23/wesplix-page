@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
@@ -26,7 +27,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50">
+    <header className="top-0 z-50 fixed inset-x-0">
       <div
         className={`mx-auto max-w-7xl transition-all duration-500 ${
           scrolled ? "mt-3 px-4" : "mt-0 px-0"
@@ -40,10 +41,14 @@ export function Navbar() {
           }`}
         >
           <a href="#top" className="flex items-center gap-2 shrink-0">
-            <span className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.06] ring-1 ring-white/10">
-              <span className="h-3 w-3 rounded-[3px]" style={{ background: "var(--gradient-primary)" }} />
-            </span>
-            <span className="text-[15px] font-semibold tracking-tight">Wesplix Media</span>
+            <Image
+              src="/logo-blanco.svg"
+              alt="Wesplix Media"
+              width={85.5}
+              height={64}
+              className="w-auto h-12"
+              priority
+            />
           </a>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -51,7 +56,7 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-muted hover:text-foreground transition-colors"
+                className="text-muted hover:text-foreground text-sm transition-colors"
               >
                 {link.label}
               </a>
@@ -61,19 +66,19 @@ export function Navbar() {
           <div className="hidden md:block">
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-1.5 rounded-full bg-foreground text-background pl-4 pr-3.5 py-2 text-sm font-medium transition-transform hover:scale-[1.03]"
+              className="group inline-flex items-center gap-1.5 bg-foreground py-2 pr-3.5 pl-4 rounded-full font-medium text-background text-sm hover:scale-[1.03] transition-transform"
             >
               Iniciar proyecto
-              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
           </div>
 
           <button
-            className="md:hidden p-2 -mr-2 text-foreground"
+            className="md:hidden -mr-2 p-2 text-foreground"
             onClick={() => setOpen((v) => !v)}
             aria-label="Abrir menú"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
@@ -85,7 +90,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden mx-4 mt-2 glass rounded-2xl border border-border p-5"
+            className="md:hidden mx-4 mt-2 p-5 border border-border rounded-2xl glass"
           >
             <nav className="flex flex-col gap-1">
               {links.map((link) => (
@@ -93,7 +98,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="py-2.5 text-base text-foreground/90 hover:text-white"
+                  className="py-2.5 text-foreground/90 hover:text-white text-base"
                 >
                   {link.label}
                 </a>
@@ -101,7 +106,7 @@ export function Navbar() {
               <a
                 href="#contacto"
                 onClick={() => setOpen(false)}
-                className="mt-3 inline-flex items-center justify-center gap-1.5 rounded-full bg-foreground text-background px-4 py-2.5 text-sm font-medium"
+                className="inline-flex justify-center items-center gap-1.5 bg-foreground mt-3 px-4 py-2.5 rounded-full font-medium text-background text-sm"
               >
                 Iniciar proyecto
               </a>
