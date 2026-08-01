@@ -10,12 +10,16 @@ export function MagneticButton({
   href,
   onClick,
   strength = 0.35,
+  disabled = false,
+  type = "button",
 }: {
   children: ReactNode;
   className?: string;
   href?: string;
   onClick?: () => void;
   strength?: number;
+  disabled?: boolean;
+  type?: "button" | "submit";
 }) {
   const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
   const x = useMotionValue(0);
@@ -48,10 +52,11 @@ export function MagneticButton({
   );
 
   const sharedProps = {
-    onMouseMove: handleMouseMove,
-    onMouseLeave: handleMouseLeave,
+    onMouseMove: disabled ? undefined : handleMouseMove,
+    onMouseLeave: disabled ? undefined : handleMouseLeave,
     className: cn(
       "group relative inline-flex items-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-medium transition-colors",
+      disabled && "opacity-40 pointer-events-none",
       className
     ),
   };
@@ -68,7 +73,8 @@ export function MagneticButton({
     <motion.button
       ref={ref as React.RefObject<HTMLButtonElement>}
       onClick={onClick}
-      type="button"
+      type={type}
+      disabled={disabled}
       {...sharedProps}
     >
       {content}

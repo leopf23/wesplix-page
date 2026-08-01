@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { useQuoteDrawer } from "@/components/quote/QuoteDrawer";
 
 const links = [
   { label: "Servicios", href: "#servicios" },
@@ -16,6 +17,7 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { openDrawer } = useQuoteDrawer();
 
   useEffect(() => {
     function onScroll() {
@@ -46,7 +48,7 @@ export function Navbar() {
               alt="Wesplix Media"
               width={85.5}
               height={64}
-              className="w-auto h-12"
+              className="w-auto h-11"
               priority
             />
           </a>
@@ -64,13 +66,13 @@ export function Navbar() {
           </nav>
 
           <div className="hidden md:block">
-            <a
-              href="#contacto"
+            <button
+              onClick={openDrawer}
               className="group inline-flex items-center gap-1.5 bg-foreground py-2 pr-3.5 pl-4 rounded-full font-medium text-background text-sm hover:scale-[1.03] transition-transform"
             >
-              Iniciar proyecto
+              Cotiza tu proyecto
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
+            </button>
           </div>
 
           <button
@@ -103,13 +105,15 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#contacto"
-                onClick={() => setOpen(false)}
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  openDrawer();
+                }}
                 className="inline-flex justify-center items-center gap-1.5 bg-foreground mt-3 px-4 py-2.5 rounded-full font-medium text-background text-sm"
               >
-                Iniciar proyecto
-              </a>
+                Cotiza tu proyecto
+              </button>
             </nav>
           </motion.div>
         )}

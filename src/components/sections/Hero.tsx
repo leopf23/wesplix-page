@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowUpRight, Sparkles, TrendingUp, Layers } from "lucide-react";
+import { ArrowUpRight, TrendingUp, Layers } from "lucide-react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { useQuoteDrawer } from "@/components/quote/QuoteDrawer";
 
 export function Hero() {
+  const { openDrawer } = useQuoteDrawer();
+
   return (
     <section
       id="top"
@@ -24,7 +27,7 @@ export function Hero() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="flex justify-center"
         >
-          <div className="inline-flex items-center gap-2 bg-white/[0.04] px-4 py-1.5 border border-border-strong rounded-full text-muted text-xs">
+          <div className="inline-flex items-center gap-2 bg-white/4 px-4 py-1.5 border border-border-strong rounded-full text-muted text-xs">
             Soluciones digitales &amp; creatividad, nivel 2026
           </div>
         </motion.div>
@@ -33,7 +36,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 font-semibold text-[13vw] sm:text-[64px] md:text-[86px] lg:text-[75px] text-center leading-[0.98] tracking-[-0.03em]"
+          className="mt-8 font-semibold text-[13vw] sm:text-[64px] md:text-[86px] lg:text-[68px] text-center leading-[0.98] tracking-[-0.03em]"
         >
           Construimos el software
           <br />
@@ -59,10 +62,10 @@ export function Hero() {
           className="flex sm:flex-row flex-col justify-center items-center gap-4 mt-10"
         >
           <MagneticButton
-            href="#contacto"
+            onClick={openDrawer}
             className="bg-foreground hover:brightness-95 text-background"
           >
-            Iniciar un proyecto
+            Cotiza tu proyecto
             <ArrowUpRight className="w-4 h-4" />
           </MagneticButton>
           <MagneticButton
