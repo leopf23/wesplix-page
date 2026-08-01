@@ -15,10 +15,36 @@ const services = [
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [service, setService] = useState(services[0]);
+  const [message, setMessage] = useState("");
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          service,
+          message,
+          source: "Formulario de contacto",
+        }),
+      });
+      if (!res.ok) throw new Error("No se pudo enviar el mensaje.");
+      setSent(true);
+    } catch {
+      setError("Hubo un problema al enviar tu mensaje. Intenta de nuevo.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -85,6 +111,8 @@ export function Contact() {
                       <input
                         required
                         type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         placeholder="Tu nombre"
                         className="w-full rounded-xl border border-border bg-white/[0.02] px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet"
                       />
@@ -96,6 +124,8 @@ export function Contact() {
                       <input
                         required
                         type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="tu@empresa.com"
                         className="w-full rounded-xl border border-border bg-white/[0.02] px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet"
                       />
@@ -106,7 +136,11 @@ export function Contact() {
                     <label className="block text-xs text-muted mb-2">
                       Servicio de interés
                     </label>
-                    <select className="w-full rounded-xl border border-border bg-white/[0.02] px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet">
+                    <select
+                      value={service}
+                      onChange={(e) => setService(e.target.value)}
+                      className="w-full rounded-xl border border-border bg-white/[0.02] px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet"
+                    >
                       {services.map((s) => (
                         <option key={s} value={s} className="bg-surface">
                           {s}
@@ -122,16 +156,23 @@ export function Contact() {
                     <textarea
                       required
                       rows={4}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
                       placeholder="Estamos buscando..."
                       className="w-full resize-none rounded-xl border border-border bg-white/[0.02] px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet"
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-sm text-red-400">{error}</p>
+                  )}
+
                   <button
                     type="submit"
-                    className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3.5 text-sm font-medium transition-transform hover:scale-[1.01]"
+                    disabled={loading}
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3.5 text-sm font-medium transition-transform hover:scale-[1.01] disabled:opacity-60 disabled:hover:scale-100"
                   >
-                    Enviar mensaje
+                    {loading ? "Enviando..." : "Enviar mensaje"}
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </button>
                 </form>

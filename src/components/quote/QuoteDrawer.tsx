@@ -67,6 +67,8 @@ function QuoteDrawer({
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1);
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [service, setService] = useState<string | null>(null);
@@ -78,6 +80,8 @@ function QuoteDrawer({
       setStep(1);
       setDirection(1);
       setSent(false);
+      setSending(false);
+      setError(null);
       setName("");
       setEmail("");
       setService(null);
@@ -95,8 +99,30 @@ function QuoteDrawer({
     setStep((s) => Math.max(s - 1, 1));
   }
 
-  function submitQuote() {
-    setSent(true);
+  async function submitQuote() {
+    setError(null);
+    setSending(true);
+    try {
+      const serviceTitle =
+        quoteServices.find((s) => s.id === service)?.title ?? service ?? "";
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          service: serviceTitle,
+          message,
+          source: "Cotizador (drawer)",
+        }),
+      });
+      if (!res.ok) throw new Error("No se pudo enviar la cotización.");
+      setSent(true);
+    } catch {
+      setError("Hubo un problema al enviar tu cotización. Intenta de nuevo.");
+    } finally {
+      setSending(false);
+    }
   }
 
   const step1Valid = name.trim().length > 1 && /\S+@\S+\.\S+/.test(email);
@@ -365,33 +391,39 @@ function QuoteDrawer({
             </div>
 
             {!sent && (
-              <div className="flex items-center justify-between gap-3 border-t border-border px-6 py-6 md:px-8">
-                <button
-                  type="button"
-                  onClick={goBack}
-                  disabled={step === 1}
-                  className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground disabled:pointer-events-none disabled:opacity-0"
-                >
-                  <ArrowLeft className="h-4 w-4" /> Atrás
-                </button>
-                {step < 3 ? (
-                  <MagneticButton
-                    onClick={goNext}
-                    disabled={step === 1 ? !step1Valid : !step2Valid}
-                    className="bg-foreground text-background hover:brightness-95"
-                  >
-                    Siguiente
-                    <ArrowRight className="h-4 w-4" />
-                  </MagneticButton>
-                ) : (
-                  <MagneticButton
-                    onClick={submitQuote}
-                    className="bg-foreground text-background hover:brightness-95"
-                  >
-                    Enviar cotización
-                    <ArrowRight className="h-4 w-4" />
-                  </MagneticButton>
+              <div className="border-t border-border px-6 py-6 md:px-8">
+                {error && (
+                  <p className="mb-3 text-sm text-red-400">{error}</p>
                 )}
+                <div className="flex items-center justify-between gap-3">
+                  <button
+                    type="button"
+                    onClick={goBack}
+                    disabled={step === 1}
+                    className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground disabled:pointer-events-none disabled:opacity-0"
+                  >
+                    <ArrowLeft className="h-4 w-4" /> Atrás
+                  </button>
+                  {step < 3 ? (
+                    <MagneticButton
+                      onClick={goNext}
+                      disabled={step === 1 ? !step1Valid : !step2Valid}
+                      className="bg-foreground text-background hover:brightness-95"
+                    >
+                      Siguiente
+                      <ArrowRight className="h-4 w-4" />
+                    </MagneticButton>
+                  ) : (
+                    <MagneticButton
+                      onClick={submitQuote}
+                      disabled={sending}
+                      className="bg-foreground text-background hover:brightness-95"
+                    >
+                      {sending ? "Enviando..." : "Enviar cotización"}
+                      <ArrowRight className="h-4 w-4" />
+                    </MagneticButton>
+                  )}
+                </div>
               </div>
             )}
           </motion.div>
