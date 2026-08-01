@@ -46,6 +46,25 @@ export function Services() {
               </div>
             </motion.div>
           ))}
+          <motion.a
+            href="#contacto"
+            variants={revealItem}
+            className="group relative flex min-h-[220px] flex-col justify-between p-7 transition-colors"
+            style={{ background: "var(--gradient-primary)" }}
+          >
+            <div className="flex items-start justify-between">
+              <span className="text-xs text-black/60 font-mono">+</span>
+              <ArrowUpRight className="h-4 w-4 text-black/70 -translate-y-1 translate-x-1 transition-all group-hover:translate-y-0 group-hover:translate-x-0" />
+            </div>
+            <div>
+              <h3 className="text-lg font-medium mb-2 text-black">
+                ¿Buscas algo más?
+              </h3>
+              <p className="text-sm text-black/70 leading-relaxed">
+                Cuéntanos qué necesitas y armamos una propuesta a tu medida.
+              </p>
+            </div>
+          </motion.a>
         </RevealGroup>
       </div>
     </section>

@@ -36,10 +36,10 @@ export function Hero() {
           transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="mt-8 text-center font-semibold tracking-[-0.03em] text-[13vw] leading-[0.98] sm:text-[64px] md:text-[86px] lg:text-[96px]"
         >
-          Construimos marcas
+          Construimos el software
           <br />
-          que se sienten{" "}
-          <span className="text-gradient">inevitables</span>
+          y la marca de tu{" "}
+          <span className="text-gradient">próximo negocio</span>
         </motion.h1>
 
         <motion.p
@@ -48,9 +48,9 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto mt-7 max-w-xl text-center text-base md:text-lg text-muted"
         >
-          Wesplix Media diseña y desarrolla branding, productos digitales y
-          campañas que transmiten innovación, creatividad y confianza —
-          desde la primera idea hasta el lanzamiento.
+          Desarrollo de software, sitios web, branding y gestión de redes
+          sociales en un solo equipo. Diseño y tecnología pensados para
+          crecer contigo.
         </motion.p>
 
         <motion.div
@@ -67,10 +67,10 @@ export function Hero() {
             <ArrowUpRight className="h-4 w-4" />
           </MagneticButton>
           <MagneticButton
-            href="#portafolio"
+            href="#software"
             className="border border-border-strong text-foreground hover:bg-white/[0.05]"
           >
-            Ver portafolio
+            Ver software
           </MagneticButton>
         </motion.div>
 

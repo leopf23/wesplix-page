@@ -5,7 +5,7 @@ import { Hero } from "@/components/sections/Hero";
 import { TrustedBy } from "@/components/sections/TrustedBy";
 import { Services } from "@/components/sections/Services";
 import { Process } from "@/components/sections/Process";
-import { Portfolio } from "@/components/sections/Portfolio";
+import { Software } from "@/components/sections/Software";
 import { Benefits } from "@/components/sections/Benefits";
 import { TechStack } from "@/components/sections/TechStack";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -23,7 +23,7 @@ export default function Home() {
         <TrustedBy />
         <Services />
         <Process />
-        <Portfolio />
+        <Software />
         <Benefits />
         <TechStack />
         <Testimonials />

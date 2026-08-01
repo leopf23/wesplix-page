@@ -28,88 +28,25 @@ export const services = [
     tag: "04",
   },
   {
-    id: "ecommerce",
-    title: "Tiendas Online",
-    description:
-      "E-commerce robusto, con checkout optimizado, pasarelas de pago y una experiencia de compra que retiene clientes.",
-    tag: "05",
-  },
-  {
-    id: "landing",
-    title: "Landing Pages",
-    description:
-      "Páginas de aterrizaje diseñadas para convertir, con copy persuasivo, pruebas A/B y velocidad de carga extrema.",
-    tag: "06",
-  },
-  {
     id: "graphic",
     title: "Diseño Gráfico",
     description:
       "Piezas visuales para campañas, presentaciones y materiales de marca, con consistencia y calidad editorial.",
-    tag: "07",
-  },
-  {
-    id: "advertising",
-    title: "Publicidad",
-    description:
-      "Estrategia y creatividad publicitaria para plataformas digitales, enfocada en resultados medibles y ROI.",
-    tag: "08",
-  },
-  {
-    id: "social",
-    title: "Manejo de Redes Sociales",
-    description:
-      "Gestión de comunidad, calendarios de contenido y estrategia de crecimiento orgánico y pago en cada plataforma.",
-    tag: "09",
-  },
-  {
-    id: "audiovisual",
-    title: "Producción Audiovisual",
-    description:
-      "Producción de video corporativo, comercial y de contenido, desde el concepto hasta la entrega final.",
-    tag: "10",
-  },
-  {
-    id: "video",
-    title: "Edición de Video",
-    description:
-      "Postproducción profesional: color, motion graphics, sonido y ritmo narrativo para cada formato y plataforma.",
-    tag: "11",
-  },
-  {
-    id: "photography",
-    title: "Fotografía Profesional",
-    description:
-      "Sesiones de producto, retrato corporativo y campaña, con dirección de arte y postproducción incluidas.",
-    tag: "12",
+    tag: "05",
   },
   {
     id: "printing",
     title: "Impresiones",
     description:
       "Producción gráfica impresa de alta calidad para materiales corporativos, packaging y punto de venta.",
-    tag: "13",
-  },
-  {
-    id: "merch",
-    title: "Artículos Promocionales",
-    description:
-      "Personalización de merchandising y artículos de marca que refuerzan tu identidad en cada entrega.",
-    tag: "14",
+    tag: "06",
   },
   {
     id: "marketing",
     title: "Marketing Digital",
     description:
       "Estrategias de adquisición, performance marketing y analítica que conectan cada canal con resultados de negocio.",
-    tag: "15",
-  },
-  {
-    id: "consulting",
-    title: "Consultoría Digital",
-    description:
-      "Diagnóstico y hoja de ruta digital para empresas que buscan modernizar su presencia y procesos.",
-    tag: "16",
+    tag: "07",
   },
 ] as const;
 
@@ -146,34 +83,27 @@ export const process = [
   },
 ];
 
-export const portfolio = [
+export const software = [
   {
     id: "01",
-    title: "Aurora Finance",
-    category: "Fintech · Producto Digital",
-    description: "Rediseño de dashboard financiero con foco en claridad de datos y confianza.",
+    title: "iFlash",
+    category: "Productividad · App",
+    description: "Herramienta de estudio y memorización rápida con repaso inteligente por tarjetas.",
     color: "from-violet-500/30 via-fuchsia-500/20 to-transparent",
   },
   {
     id: "02",
-    title: "Nortec Retail",
-    category: "E-commerce · Tienda Online",
-    description: "Tienda online con checkout optimizado que incrementó la conversión un 38%.",
+    title: "Wesplix Cloud",
+    category: "Infraestructura · Plataforma",
+    description: "Plataforma de almacenamiento y gestión en la nube para equipos y negocios.",
     color: "from-cyan-400/30 via-blue-500/20 to-transparent",
   },
   {
     id: "03",
-    title: "Studio Marea",
-    category: "Branding · Identidad Visual",
-    description: "Identidad de marca completa para un estudio creativo boutique.",
+    title: "Wesplix Boards",
+    category: "Gestión · Colaboración",
+    description: "Tableros colaborativos para organizar proyectos, tareas y equipos en un solo lugar.",
     color: "from-orange-400/30 via-rose-500/20 to-transparent",
-  },
-  {
-    id: "04",
-    title: "Vantera Health",
-    category: "Salud · Plataforma Web",
-    description: "Plataforma de agendamiento médico con arquitectura escalable y accesible.",
-    color: "from-emerald-400/30 via-teal-500/20 to-transparent",
   },
 ];
 

@@ -1,35 +1,41 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import { portfolio } from "@/lib/data";
+import { software } from "@/lib/data";
 import { Reveal } from "@/components/ui/Reveal";
 import { motion } from "motion/react";
 
-export function Portfolio() {
+export function Software() {
   return (
-    <section id="portafolio" className="relative py-28 md:py-36">
+    <section id="software" className="relative py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.2em] text-accent-orange mb-4">
-              Portafolio
+              Nuestro software
             </p>
             <h2 className="text-4xl md:text-5xl font-semibold tracking-tight max-w-xl">
-              Casos de éxito recientes
+              Productos propios, construidos por nosotros
             </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="max-w-sm text-muted text-sm md:text-base">
+              Además de construir para nuestros clientes, desarrollamos y
+              mantenemos nuestras propias herramientas de software.
+            </p>
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {portfolio.map((project, i) => (
-            <Reveal key={project.id} delay={i * 0.08}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {software.map((product, i) => (
+            <Reveal key={product.id} delay={i * 0.08}>
               <motion.a
                 href="#contacto"
                 whileHover="hover"
-                className="group relative block rounded-3xl border border-border overflow-hidden bg-surface"
+                className="group relative block rounded-3xl border border-border overflow-hidden bg-surface h-full"
               >
                 <div
-                  className={`relative h-64 md:h-80 bg-gradient-to-br ${project.color} flex items-end p-6`}
+                  className={`relative h-56 bg-gradient-to-br ${product.color} flex items-end p-6`}
                 >
                   <div className="absolute inset-0 bg-grid opacity-40 [mask-image:linear-gradient(to_bottom,transparent,black)]" />
                   <motion.div
@@ -38,7 +44,7 @@ export function Portfolio() {
                     className="relative z-10 w-full flex items-end justify-between"
                   >
                     <span className="text-6xl font-semibold text-white/10">
-                      {project.id}
+                      {product.id}
                     </span>
                     <motion.span
                       variants={{ hover: { scale: 1.1, rotate: 45 } }}
@@ -50,11 +56,11 @@ export function Portfolio() {
                 </div>
                 <div className="p-6">
                   <p className="text-xs uppercase tracking-wide text-muted mb-2">
-                    {project.category}
+                    {product.category}
                   </p>
-                  <h3 className="text-xl font-medium mb-2">{project.title}</h3>
+                  <h3 className="text-xl font-medium mb-2">{product.title}</h3>
                   <p className="text-sm text-muted leading-relaxed">
-                    {project.description}
+                    {product.description}
                   </p>
                 </div>
               </motion.a>
