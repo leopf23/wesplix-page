@@ -45,7 +45,10 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground antialiased selection:bg-accent-violet selection:text-white">
+      <body
+        className="min-h-full flex flex-col bg-background text-foreground antialiased selection:bg-accent-violet selection:text-white"
+        suppressHydrationWarning
+      >
         <QuoteDrawerProvider>{children}</QuoteDrawerProvider>
       </body>
     </html>
